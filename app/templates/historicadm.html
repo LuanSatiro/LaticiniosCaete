@@ -1,0 +1,51 @@
+{% extends 'base.html'%}
+{% block content%}
+
+{% for a in order %}
+    {% if a.status == "finalizado"%}
+    {% for b in product %}
+        {% if a.product_id == b.id %}
+        {% for c in users %}
+        {% if a.user_id == c.id %}
+            <div class="container-fluid border mt-4 col-12" style="">
+                <div class="row">
+                    <div class="col-6">
+                        <h4>Pediado realizado em: {{a.date_posted}}</h4>
+                        <h4>Nome do comprador: {{c.username}}</h4>                        
+                    </div>
+                    <div class="col-6">
+                        <h4>Status do pedido: {{a.status}}</h4>
+                        <h4>Contato do comprador: {{c.contato}}</h4>   
+                    </div>
+                </div>
+                <div class="row">
+                    <div class="col-3">
+                        <h4>Cidade: {{c.city}}</h4>
+                        <h4>Produto: {{b.title}}</h4>
+                    </div>
+                    <div class="col-3">
+                        <h4>Rua: {{c.street}}</h4>
+                        <h4 class="">Quantidade: {{a.units}}</h4>
+                    </div>
+                    <div class="col-3">
+                        <h4>N°: {{c.number}}</h4>
+                        <h4>Preço total R$: {{ (a.units * b.prices)|round(2)}} </h4>
+                        
+                    </div>
+                    <div class="col-3">
+
+                        
+                    </div>
+                </div>
+
+            </div>
+        </form>
+        {% endif %}
+        {% endfor %}
+        {% endif %}
+    {% endfor%}
+    {% endif %}
+{% endfor %}
+
+
+{% endblock %}

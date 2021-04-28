@@ -1,0 +1,73 @@
+{% extends 'base.html' %}
+
+
+{% block content %}
+<div class="container-fluid text-center">
+  {% with messages = get_flashed_messages() %}
+  {% if messages %}
+      <div class="flashes ">
+      {% for message in messages %}
+      <div class="text-center  container-fluid col-12"style="; background-color: ; width:300px; ">{{ message }}</div>
+      {% endfor %}
+      </div>
+  {% endif %}
+  {% endwith %}
+  {% if current_user.is_authenticated%}
+  {% if current_user.id == 1 %} 
+    <a class="ad2 border btn btn-secondary" style="color:#ffff; background-color: ;" type="button" href="/products/new">Adicionar novo produto</a>
+  {% endif %}
+  {% endif%}
+</div>
+ 
+  <div class="container-fluid mt-5 text-center">
+  <div class="row">
+    {% for list in products %}
+    <div class="col-6 col-sm-6 col-md-3 col-lg-3 col-xl-3">
+      <div class="card mt-3">
+        <div class="card-header text-left text-dark" style="background-color:#ffffff ;">
+         <h5>Produto: {{list.title}}</h5> 
+        <div class="card-body">
+          <img src="/static/storage/{{list.img }}" style="width: 80%; height:150px" class="card-img-top" alt="...">
+          <p class="card-text">{{ list.subtitle }}</p>
+          
+          <p class="card-text">R$: {{list.prices}}</p>
+          {% if current_user.is_authenticated%}
+          {% if current_user.id != 1 %}
+          <a class="btn border btn-secondary ad2" style="color:#ffff; background-color: ;" href="{{ url_for('order', user_id=current_user.id, product_id=list.id) }}">Ver produto</a>
+          {% else %}
+          <button type="button" style="color:#ffff; width:80%; background-color: ;"  class="btn btn-secondary" data-bs-toggle="modal" data-bs-target="#exampleModal{{list.id}}">
+            Apagar do histórico
+          </button>
+          {% endif %}
+          {% endif%}
+
+          
+        </div>
+      </div>
+    </div>
+  </div>
+    <!-- Modal -->
+    <div class="modal fade" id="exampleModal{{list.id}}" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+      <div class="modal-dialog">
+      <div class="modal-content">
+          <div class="modal-header">
+          <h5 class="modal-title" id="exampleModalLabel">Tem certeza?</h5>
+          <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+          </div>
+          <div class="modal-body">
+          Após apagar de seu histórico não será possivel recuperar esses dados, serão excluidos todos os pedidos atribuidos a este produto.
+          </div>
+          <div class="modal-footer">
+          <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Fechar</button>
+          <form action="/product/delete/{{list.id}}" method="POST">
+              <input class="btn text-dark" style="background-color: #ffffff;" type="submit" value="Delete">
+          </form>
+          </div>
+      </div>
+      </div>
+  </div>
+  {% endfor %}
+</div>
+</div>
+
+{% endblock %}

@@ -1,0 +1,77 @@
+{% extends "base.html" %}
+{% block content %}
+{% with messages = get_flashed_messages() %}
+{% if messages %}
+    <div class="flashes ">
+    {% for message in messages %}
+    <div class="text-center  container-fluid col-12"style="; background-color: ; width:300px; ">{{ message }}</div>
+    {% endfor %}
+    </div>
+{% endif %}
+{% endwith %}
+{% set l= [] %}
+    {% for a in order %}
+        {% if current_user.id == a.user_id %}
+            {% for b in product %}
+                {% if a.product_id == b.id %}
+                
+                {% set l = l.append(a.units * b.prices) %}
+
+                    <div class="container-fluid border mt-4 col-12" style="">
+                        <div class="row">
+                            <div class="col-6">
+                                <h4>Pediado realizado em: {{a.date_posted}}</h4>
+                            </div>
+                            <div class="col-6">
+                                <h4>Status do pedido: {{a.status}}</h4>
+                            </div>
+                        </div>
+                        <div class="row">
+                            <div class="col-3">
+                                <h4>Produto: {{b.title}}</h4>
+                            </div>
+                            <div class="col-3">
+                                <h4>Quantidade: {{a.units}}</h4>
+                            </div>
+                            <div class="col-3">
+                                <h4>Preço total R$: {{ (a.units * b.prices)|round(2)}} </h4>
+                                
+                            </div>
+                            <div class="col-3">
+                                <!-- Button trigger modal -->
+                                {% if a.status == 'finalizado' %}
+                                <button type="button" style="color:#ffff; width:80%; background-color: ;"  class="btn btn-secondary" data-bs-toggle="modal" data-bs-target="#exampleModal{{a.id}}">
+                                    Apagar do histórico
+                                </button>
+                                {% endif %}
+                            </div>
+                        </div>
+
+                        
+                        <!-- Modal -->
+                        <div class="modal fade" id="exampleModal{{a.id}}" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+                            <div class="modal-dialog">
+                            <div class="modal-content">
+                                <div class="modal-header">
+                                <h5 class="modal-title" id="exampleModalLabel">Tem certeza?</h5>
+                                <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                                </div>
+                                <div class="modal-body">
+                                Após apagar de seu histórico não será possivel recuperar esses dados
+                                </div>
+                                <div class="modal-footer">
+                                <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Fechar</button>
+                                <form action="/order/delete/{{a.id}}" method="POST">
+                                    <input class="btn text-dark" style="background-color: #ffffff;" type="submit" value="Delete">
+                                </form>
+                                </div>
+                            </div>
+                            </div>
+                        </div>
+                    </div>
+                {% endif %}
+            {% endfor%}
+        {% endif %}
+    {% endfor %}
+<h4 class="text-center"> Total gasto com pedidos R$: {{(l| sum())| round(2)}}</h4>
+{% endblock content %}
