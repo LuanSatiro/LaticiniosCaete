@@ -1,4 +1,4 @@
-# TG-NLEARN
+# Laticinios Caete
 
 
 ### Requisitos:
@@ -49,6 +49,3 @@ Execute: python run.py runserver
 Após isso navegue até o localhost pelo navegador na página index: http://localhost:5000/index
 
 ```
-
-### Demonstrando o funcionamento parcial da aplicação: https://www.youtube.com/watch?v=n51UwHDRNfo&feature=youtu.be
-### Demonstrando o funcionamento completo da aplicação: https://www.youtube.com/watch?v=XuhpMKGNcz4&feature=youtu.be
