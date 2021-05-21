@@ -46,9 +46,8 @@ nav {
 }
 
 .home1{
-    Background: url("../img/teste2.png") 50% 50% no-repeat;
-    margin-top: 50px ;
-    height: 800px;
+    
+    padding-top: 350px !important;
 }
 .ta{
     
