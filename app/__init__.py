@@ -47,30 +47,6 @@ class CreateProductForm(FlaskForm):
     price = DecimalField('Preço (Somente duas casas após o ponto final)', places=1, rounding=ROUND_UP, validators=[InputRequired('Um preço é exigido')])
     submit= SubmitField('Finalizar')
 
-class CreatePostForm(FlaskForm):
-
-    title = StringField('Titulo', validators=[InputRequired(message='Um titulo é exigido'), Length(min=1, max=20, message= 'Máximo de 20 caracteres.')])
-    subtitle = StringField('Subtitulo', validators=[InputRequired('Um subtitulo é exigido')])
-    picture1 = FileField('Upload da imagem', validators=[FileAllowed(['jpg', 'png'])])
-    text= TextAreaField('Texto', validators=[InputRequired('Um texto é exigido')])
-    picture2 = FileField('Upload da imagem', validators=[FileAllowed(['jpg', 'png'])])
-    text2= TextAreaField('Texto', validators=[InputRequired('Um texto é exigido')])
-    exercise = TextAreaField('Exercicio', validators=[InputRequired('A exercise is required')])
-    picture3 = FileField('Upload da imagem', validators=[FileAllowed(['jpg', 'png'])])
-    key = StringField('key (Será atribuido ao guia de tópicos da linguagem)', validators=[InputRequired('Uma key é exigida'), Length(min=1, max=20, message= 'Máximo de 20 caracteres')])
-    languageKey = SelectField(u'Key da linguagem')
-    submit= SubmitField('Finalizar')
-
-class UpdateAccount(FlaskForm):
-    username = StringField('Nome de usuário', validators=[InputRequired(message='Um usuário é exigido'), Length(min=1, max=30, message= 'Máximo de 30 caracteres.')])
-    password = StringField('Senha', validators=[InputRequired(message='Um usuário é exigido'), Length(min=1, max=30, message= 'Máximo de 30 caracteres.')])
-    contato = StringField('Contato', validators=[InputRequired(message='Um contato é exigido'), Length(min=1, max=60, message= 'Máximo de 60 caracteres.')])
-    city = StringField('city', validators=[InputRequired(message='Um contato é exigido'), Length(min=1, max=60, message= 'Máximo de 60 caracteres.')])
-    street = StringField('street', validators=[InputRequired(message='Um contato é exigido'), Length(min=1, max=60, message= 'Máximo de 60 caracteres.')])
-    number = DecimalField('number')
-    flag = StringField('Flag', validators=[InputRequired(message='Uma tag é exigido'), Length(min=1, max=60, message= 'Máximo de 60 caracteres.')])
-    submit= SubmitField('Finalizar')
-    
 class UpdateAccount1(FlaskForm):
     username = StringField('Nome de usuário', validators=[InputRequired(message='Um usuário é exigido'), Length(min=1, max=30, message= 'Máximo de 30 caracteres.')])
     password = StringField('Senha', validators=[InputRequired(message='Um usuário é exigido'), Length(min=1, max=30, message= 'Máximo de 30 caracteres.')])
@@ -80,15 +56,7 @@ class UpdateAccount1(FlaskForm):
     number = IntegerField('Numero')
     submit= SubmitField('Finalizar')
 
-class Coment(FlaskForm):
-    name = StringField('Nome de usuário', validators=[InputRequired(message='Um usuário é exigido'), Length(min=1, max=30, message= 'Máximo de 30 caracteres.')])
-    text = TextAreaField('Texto', validators=[InputRequired('Um texto é exigido')])
-    submit= SubmitField('comentar')
 
-class Response1(FlaskForm):
-    name = StringField('Nome de usuário', validators=[InputRequired(message='Um usuário é exigido'), Length(min=1, max=30, message= 'Máximo de 30 caracteres.')])
-    text = TextAreaField('Texto', validators=[InputRequired('Um texto é exigido')])
-    submit= SubmitField('comentar')
     
 # from app import admin
 # admin.init_app(app)

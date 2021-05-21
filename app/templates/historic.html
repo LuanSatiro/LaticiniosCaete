@@ -12,10 +12,8 @@
 {% set l= [] %}
     {% for a in order %}
         {% if current_user.id == a.user_id %}
-            {% for b in product %}
-                {% if a.product_id == b.id %}
-                
-                {% set l = l.append(a.units * b.prices) %}
+                {% if a.product_id == a.products.id %}
+                {% set l = l.append(a.units * a.products.prices) %}
 
                     <div class="container-fluid border mt-4 col-12" style="">
                         <div class="row">
@@ -28,13 +26,13 @@
                         </div>
                         <div class="row">
                             <div class="col-3">
-                                <h4>Produto: {{b.title}}</h4>
+                                <h4>Produto: {{a.products.title}}</h4>
                             </div>
                             <div class="col-3">
                                 <h4>Quantidade: {{a.units}}</h4>
                             </div>
                             <div class="col-3">
-                                <h4>Preço total R$: {{ (a.units * b.prices)|round(2)}} </h4>
+                                <h4>Preço total R$: {{ (a.units * a.products.prices)|round(2)}} </h4>
                                 
                             </div>
                             <div class="col-3">
@@ -70,7 +68,6 @@
                         </div>
                     </div>
                 {% endif %}
-            {% endfor%}
         {% endif %}
     {% endfor %}
 <h4 class="text-center"> Total gasto com pedidos R$: {{(l| sum())| round(2)}}</h4>

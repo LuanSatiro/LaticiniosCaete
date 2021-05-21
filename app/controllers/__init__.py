@@ -16,7 +16,7 @@ def load_user(user_id):
     return Users.query.get(int(user_id))
 
 # tela inicial
-@app.route("/index")
+@app.route("/")
 def index():
     
     return render_template('index.html')

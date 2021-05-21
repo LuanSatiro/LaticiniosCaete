@@ -3,16 +3,7 @@ from flask_login import UserMixin
 from datetime import datetime
 
 
-class Users(db.Model, UserMixin):
-    __tablename__ = "users"
 
-    id = db.Column(db.Integer, primary_key=True, nullable=True)
-    username =  db.Column(db.String(30), unique=True)
-    password = db.Column(db.String(30))
-    contato = db.Column(db.String(60))
-    city = db.Column(db.String(60))
-    street = db.Column(db.String(60))
-    number = db.Column(db.Integer)
 
 class Order(db.Model):
    __tablename__ = "order"
@@ -23,6 +14,18 @@ class Order(db.Model):
    date_posted = db.Column(db.DateTime(timezone=True), nullable=False, default=datetime.now)
    status = db.Column(db.String(60))
 
+class Users(db.Model, UserMixin):
+    __tablename__ = "users"
+
+    id = db.Column(db.Integer, primary_key=True, nullable=True)
+    username =  db.Column(db.String(30), unique=True)
+    password = db.Column(db.String(30))
+    contato = db.Column(db.String(60))
+    city = db.Column(db.String(60))
+    street = db.Column(db.String(60))
+    number = db.Column(db.Integer)
+    relation = db.relationship(Order, backref="users")
+    
 class Products(db.Model):
     __tablename__ = "products"
     id = db.Column(db.Integer, primary_key=True, nullable=True)

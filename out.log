@@ -1,0 +1,22 @@
+2021-04-29T00:55:33.697282+00:00 app[api]: Initial release by user satiro_underground@hotmail.com
+2021-04-29T00:55:33.697282+00:00 app[api]: Release v1 created by user satiro_underground@hotmail.com
+2021-04-29T00:55:34.120532+00:00 app[api]: Enable Logplex by user satiro_underground@hotmail.com
+2021-04-29T00:55:34.120532+00:00 app[api]: Release v2 created by user satiro_underground@hotmail.com
+2021-04-29T01:00:03.000000+00:00 app[api]: Build started by user satiro_underground@hotmail.com
+2021-04-29T01:01:30.710574+00:00 app[api]: Deploy 0d19bac9 by user satiro_underground@hotmail.com
+2021-04-29T01:01:30.710574+00:00 app[api]: Release v3 created by user satiro_underground@hotmail.com
+2021-04-29T01:01:30.726027+00:00 app[api]: Scaled to web@1:Free by user satiro_underground@hotmail.com
+2021-04-29T01:01:42.901187+00:00 heroku[web.1]: Starting process with command `python run.py runserver -h 0.0.0.0 -p 27178`
+2021-04-29T01:01:48.604265+00:00 app[web.1]: * Serving Flask app "app" (lazy loading)
+2021-04-29T01:01:48.604291+00:00 app[web.1]: * Environment: production
+2021-04-29T01:01:48.604323+00:00 app[web.1]: WARNING: This is a development server. Do not use it in a production deployment.
+2021-04-29T01:01:48.604398+00:00 app[web.1]: Use a production WSGI server instead.
+2021-04-29T01:01:48.604460+00:00 app[web.1]: * Debug mode: on
+2021-04-29T01:01:48.615278+00:00 app[web.1]: * Running on http://0.0.0.0:27178/ (Press CTRL+C to quit)
+2021-04-29T01:01:48.616597+00:00 app[web.1]: * Restarting with stat
+2021-04-29T01:01:49.276615+00:00 heroku[web.1]: State changed from starting to up
+2021-04-29T01:01:49.916689+00:00 app[web.1]: * Debugger is active!
+2021-04-29T01:01:49.925916+00:00 app[web.1]: * Debugger PIN: 202-676-489
+2021-04-29T01:01:51.000000+00:00 app[api]: Build succeeded
+2021-04-29T01:03:19.224847+00:00 app[web.1]: 10.37.222.189 - - [29/Apr/2021 01:03:19] "[33mGET / HTTP/1.1[0m" 404 -
+2021-04-29T01:03:19.225723+00:00 heroku[router]: at=info method=GET path="/" host=laticinioscaete.herokuapp.com request_id=29996a08-2180-4831-9e9a-23250bb0a892 fwd="201.75.186.170" dyno=web.1 connect=1ms service=22ms status=404 bytes=393 protocol=https

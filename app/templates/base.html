@@ -13,7 +13,7 @@
     <link rel = "stylesheet"  href="{{ url_for('static', filename= 'css/all.css' ) }}"/>
     <link rel = "stylesheet"  href="{{ url_for('static', filename='css/animate.css')}}"/>
    
-    <title>Laticinios Caete</title>
+    <title>NLEARN</title>
   </head>
   <body>
  
@@ -26,7 +26,7 @@
         </button>
      <div class="collapse navbar-collapse ms-5 mt-2" id="navbarNav" style="">
       <div class="navbar-nav">
-          <a class="nav-link text-dark text-center bgcolor1 act" id="teste1" style = " background-color: #fffff;"  href="/index" >Inicio</a>
+          <a class="nav-link text-dark text-center bgcolor1 act" id="teste1" style = " background-color: #fffff;"  href="/" >Inicio</a>
            <a class="nav-link text-center bgcolor1 act" id="teste2" style = " background-color: ;"  href="/products/list">Produtos</a>
            {% if current_user.is_authenticated %}
            {% if current_user.id == 1 %}
